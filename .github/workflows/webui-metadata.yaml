@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
 
     WebUI-Action:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         name: Execute WebUI Test
         steps:
          - name: Execute Test
