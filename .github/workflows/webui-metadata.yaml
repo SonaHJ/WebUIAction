@@ -9,10 +9,10 @@ jobs:
         name: Execute WebUI Test
         steps:
          - name: Execute Test
-           uses: SonaHJ/OTSAction@main
+           uses: SonaHJ/WebUIAction@main
            with:
-            productpath: C:\Program Files\HCL\HCLOneTest
-            imshared: C:\Program Files\HCL\HCLIMShared
-            workspace: C:\WorkSpace_WebUI
+            productpath: C:/Program Files/HCL/HCLOneTest
+            imshared: C:/Program Files/HCL/HCLIMShared
+            workspace: C:/WorkSpace_WebUI
             project: Test
             suite: Test.testsuite
