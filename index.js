@@ -4,7 +4,6 @@ const path = require("path");
 
 const os = require('os');
 const fs = require('fs');
-import env from 'process';
 
 const main = async () => {
     try {
@@ -219,7 +218,7 @@ const main = async () => {
 }
 
 function getProductPath() {
-    var productPathVal = env.TEST_WORKBENCH_HOME;
+    var productPathVal = process.env.TEST_WORKBENCH_HOME;
     var isValid = isValidEnvVar(productPathVal);
     if (isValid) {
         var stats = fs.statSync(productPathVal);
