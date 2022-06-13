@@ -4,6 +4,7 @@ const path = require("path");
 
 const os = require('os');
 const fs = require('fs');
+import env from 'process';
 
 const main = async () => {
     try {
@@ -12,7 +13,7 @@ const main = async () => {
          * and store them in variables for us to use.
          **/
 
-        const productpath = core.getInput('productpath', { required: true });
+        const productpath = getProductPath();
         const projectdir = core.getInput('projectdir', { required: false });
         const imshared = core.getInput('imshared', { required: false });
         const workspace = core.getInput('workspace', { required: false });
@@ -35,6 +36,9 @@ const main = async () => {
         const publish = core.getInput('publish', { required: false });
         const publish_for = core.getInput('publish_for', { required: false });
         const publishreports = core.getInput('publishreports', { required: false });
+        if (imshared == null) {
+            imshared = getImsharedLoc(productpath);
+        }
         if (configfile) {
             if (process.platform == 'linux') {
                 script = 'cd ' + '"' + productpath + '/cmdline"' + '\n'
@@ -214,6 +218,43 @@ const main = async () => {
     }
 }
 
+function getProductPath() {
+    var productPathVal = env.TEST_WORKBENCH_HOME;
+    var isValid = isValidEnvVar(productPathVal);
+    if (isValid) {
+        var stats = fs.statSync(productPathVal);
+        isValid = stats.isDirectory();
+    }
 
+    if (!isValid) {
+        throw new Error("Could not find a valid TEST_WORKBENCH_HOME environment variable pointing to installation directory.");
+    }
+    return productPathVal;
+}
+function isValidEnvVar(productPathVal) {
+    var valid = true;
+    if (productPathVal == null)
+        valid = false;
+
+    else {
+        productPathVal = productPathVal.toLowerCase();
+        if (productPathVal.includes("*") || productPathVal.includes("?") ||
+            productPathVal.startsWith("del ") || productPathVal.startsWith("rm "))
+            valid = false;
+    }
+
+    return valid;
+}
+
+function getImsharedLoc(productpath) {
+    let ibmloc = null;
+    var rollupIndex = productpath.lastIndexOf(path.sep);
+    if (productpath.length == rollupIndex + 1) {
+        ibmloc = productpath.substring(0, rollupIndex);
+        rollupIndex = ibmloc.lastIndexOf("/");
+    }
+    ibmloc = productpath.substring(0, rollupIndex);
+    return ibmloc + path.sep + "_prop_task_IMShared_";
+}
 // Call the main function to run the action
 main();

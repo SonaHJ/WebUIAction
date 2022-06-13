@@ -8860,20 +8860,69 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
+// ESM COMPAT FLAG
+__nccwpck_require__.r(__webpack_exports__);
+
+;// CONCATENATED MODULE: external "process"
+const external_process_namespaceObject = require("process");
+var external_process_default = /*#__PURE__*/__nccwpck_require__.n(external_process_namespaceObject);
+;// CONCATENATED MODULE: ./index.js
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const path = __nccwpck_require__(1017);
 
 const os = __nccwpck_require__(2037);
 const fs = __nccwpck_require__(7147);
+
 
 const main = async () => {
     try {
@@ -8882,7 +8931,7 @@ const main = async () => {
          * and store them in variables for us to use.
          **/
 
-        const productpath = core.getInput('productpath', { required: true });
+        const productpath = getProductPath();
         const projectdir = core.getInput('projectdir', { required: false });
         const imshared = core.getInput('imshared', { required: false });
         const workspace = core.getInput('workspace', { required: false });
@@ -8905,6 +8954,9 @@ const main = async () => {
         const publish = core.getInput('publish', { required: false });
         const publish_for = core.getInput('publish_for', { required: false });
         const publishreports = core.getInput('publishreports', { required: false });
+        if (imshared == null) {
+            imshared = getImsharedLoc(productpath);
+        }
         if (configfile) {
             if (process.platform == 'linux') {
                 script = 'cd ' + '"' + productpath + '/cmdline"' + '\n'
@@ -9084,7 +9136,44 @@ const main = async () => {
     }
 }
 
+function getProductPath() {
+    var productPathVal = (external_process_default()).TEST_WORKBENCH_HOME;
+    var isValid = isValidEnvVar(productPathVal);
+    if (isValid) {
+        var stats = fs.statSync(productPathVal);
+        isValid = stats.isDirectory();
+    }
 
+    if (!isValid) {
+        throw new Error("Could not find a valid TEST_WORKBENCH_HOME environment variable pointing to installation directory.");
+    }
+    return productPathVal;
+}
+function isValidEnvVar(productPathVal) {
+    var valid = true;
+    if (productPathVal == null)
+        valid = false;
+
+    else {
+        productPathVal = productPathVal.toLowerCase();
+        if (productPathVal.includes("*") || productPathVal.includes("?") ||
+            productPathVal.startsWith("del ") || productPathVal.startsWith("rm "))
+            valid = false;
+    }
+
+    return valid;
+}
+
+function getImsharedLoc(productpath) {
+    let ibmloc = null;
+    var rollupIndex = productpath.lastIndexOf(path.sep);
+    if (productpath.length == rollupIndex + 1) {
+        ibmloc = productpath.substring(0, rollupIndex);
+        rollupIndex = ibmloc.lastIndexOf("/");
+    }
+    ibmloc = productpath.substring(0, rollupIndex);
+    return ibmloc + path.sep + "_prop_task_IMShared_";
+}
 // Call the main function to run the action
 main();
 
