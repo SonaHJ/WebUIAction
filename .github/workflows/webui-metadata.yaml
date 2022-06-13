@@ -10,7 +10,7 @@ on:
                 description: 'IMShared Location'
                 required: true
             workspace:
-                description: 'Workspace
+                description: 'Workspace'
                 required: true
             project:
                 description: 'Project'
