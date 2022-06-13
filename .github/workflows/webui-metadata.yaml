@@ -1,6 +1,23 @@
 name: WebUI Action
 
-on: workflow_dispatch
+on:
+    workflow_dispatch:
+        inputs:
+            productpath:
+                description: 'Product Path'
+                required: true
+            imshared:
+                description: 'IMShared Location'
+                required: true
+            workspace:
+                description: 'Workspace
+                required: true
+            project:
+                description: 'Project'
+                required: true
+            suite:
+                description: 'Test Suite Name'
+                required: true
 
 jobs:
 
@@ -11,8 +28,8 @@ jobs:
          - name: Execute Test
            uses: SonaHJ/WebUIAction@main
            with:
-            productpath: C:/Program Files/HCL/HCLOneTest
-            imshared: C:/Program Files/HCL/HCLIMShared
-            workspace: C:/WorkSpace_WebUI
-            project: Test
-            suite: Test.testsuite
+            productpath: '${{ github.event.inputs.productpath }}'
+            imshared: '${{ github.event.inputs.imshared }}'
+            workspace: '${{ github.event.inputs.workspace }}'
+            project: '${{ github.event.inputs.project }}'
+            suite: '${{ github.event.inputs.suite }}'
