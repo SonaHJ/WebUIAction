@@ -5,10 +5,10 @@ on:
         inputs:
             productpath:
                 description: 'Product Path'
-                required: true
+                required: false
             imshared:
                 description: 'IMShared Location'
-                required: true
+                required: false
             workspace:
                 description: 'Workspace'
                 required: true
