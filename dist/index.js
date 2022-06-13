@@ -8884,7 +8884,7 @@ const main = async () => {
 
         const productpath = getProductPath();
         const projectdir = core.getInput('projectdir', { required: false });
-        const imshared = core.getInput('imshared', { required: false });
+        var imshared = core.getInput('imshared', { required: false });
         const workspace = core.getInput('workspace', { required: false });
         const project = core.getInput('project', { required: false });
         const suite = core.getInput('suite', { required: false });
