@@ -35,6 +35,8 @@ const main = async () => {
         const publish = core.getInput('publish', { required: false });
         const publish_for = core.getInput('publish_for', { required: false });
         const publishreports = core.getInput('publishreports', { required: false });
+        console.log("productpath ==="+productpath);
+        console.log("imshared ==="+imshared);
         if (imshared == null) {
             imshared = getImsharedLoc(productpath);
         }
