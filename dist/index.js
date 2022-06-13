@@ -9126,7 +9126,8 @@ function getImsharedLoc(productpath) {
         rollupIndex = ibmloc.lastIndexOf("/");
     }
     ibmloc = productpath.substring(0, rollupIndex);
-    return ibmloc + path.sep + "_prop_task_IMShared_";
+    // Need to add proper sharedlocation HCL/IBM - hardcoded to HCL
+    return ibmloc + path.sep + "HCLIMShared";
 }
 // Call the main function to run the action
 main();
