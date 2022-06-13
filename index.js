@@ -37,7 +37,8 @@ const main = async () => {
         const publishreports = core.getInput('publishreports', { required: false });
         console.log("productpath ==="+productpath);
         console.log("imshared ==="+imshared);
-        if (imshared == null) {
+        if (!imshared) {
+            console.log("Inside if");
             imshared = getImsharedLoc(productpath);
         }
         if (configfile) {
