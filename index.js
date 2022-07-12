@@ -13,34 +13,87 @@ const main = async () => {
          **/
 
         const productpath = getProductPath();
-        const projectdir = core.getInput('projectdir', { required: false });
         var imshared = core.getInput('imshared', { required: false });
         const workspace = core.getInput('workspace', { required: false });
         const project = core.getInput('project', { required: false });
         const suite = core.getInput('suite', { required: false });
-        const labels = core.getInput('labels', { required: false });
-        const varfile = core.getInput('varfile', { required: false });
-        const swapdatasets = core.getInput('swapdatasets', { required: false });
+
         const configfile = core.getInput('configfile', { required: false });
-        const results = core.getInput('results', { required: false });
-        const overwrite = core.getInput('overwrite', { required: false });
-        const exportstats = core.getInput('exportstats', { required: false });
-        const exportstatreportlist = core.getInput('exportstatreportlist', { required: false });
-        const exportstatshtml = core.getInput('exportstatshtml', { required: false });
-        const usercomments = core.getInput('usercomments', { required: false });
-        const protocolinput = core.getInput('protocolinput', { required: false });
+        const swapdatasets = core.getInput('swapdatasets', { required: false });
         const exportreport = core.getInput('exportreport', { required: false });
-        const imports = core.getInput('imports', { imports: false });
-        const exportstatsformat = core.getInput('exportstatsformat', { required: false });
-        const publish = core.getInput('publish', { required: false });
-        const publish_for = core.getInput('publish_for', { required: false });
-        const publishreports = core.getInput('publishreports', { required: false });
-        console.log("productpath ==="+productpath);
-        console.log("imshared ==="+imshared);
+        const exportstats = core.getInput('exportstats', { required: false });
+        const exportstatshtml = core.getInput('exportstatshtml', { required: false });
+        const multipleValues = core.getInput('multipleValues', { required: false });
+
+        var exportstatsformat;
+        var exportstatreportlist;
+        var imports;
+        var labels;
+        var overwrite;
+        var protocolinput;
+        var publish;
+        var publish_for;
+        var publishreports;
+        var results;
+        var usercomments;
+        var varfile;
+        var vmargs;
+        
         if (!imshared) {
-            console.log("Inside if");
             imshared = getImsharedLoc(productpath);
         }
+
+        if (!isEmptyOrSpaces(multipleValues)) {
+            var mult_value = multipleValues.split('|');
+            for (var i = 0; i < mult_value.length; i++) {
+                var value = new Array(); 
+                value[0] = mult_value[i].toString().substring(0, mult_value[i].indexOf('='));
+                value[1] = mult_value[i].toString().substring(mult_value[i].indexOf('=')+1);
+                if (value.length != 2) {
+                    throw new Error(
+                        "Please enter input in keyvalue format seperated by '='"
+                    );
+                } else if (isEmptyOrSpaces(value[0])) {
+                    throw new Error(
+                        "Input key is not given"
+                    );
+                } else if (isEmptyOrSpaces(value[1])) {
+                    throw new Error(
+                        "Input key value is not given"
+                    );
+                }
+                if (value[0] == 'exportstatsformat') {
+                    exportstatsformat = value[1];
+                } else if (value[0] == 'exportstatreportlist') {
+                    exportstatreportlist = value[1];
+                } else if (value[0] == 'imports') {
+                    imports = value[1];
+                }else if (value[0] == 'labels') {
+                    labels = value[1];
+                } else if (value[0] == 'overwrite') {
+                    overwrite = value[1];
+                } else if (value[0] == 'protocolinput') {
+                    protocolinput = value[1];
+                }else if (value[0] == 'publish') {
+                    publish = value[1];
+                } else if (value[0] == 'publish_for') {
+                    publish_for = value[1];
+                } else if (value[0] == 'publishreports') {
+                    publishreports = value[1];
+                } else if (value[0] == 'results') {
+                    results = value[1];
+                }else if (value[0] == 'users') {
+                    users = value[1];
+                }else if (value[0] == 'usercomments') {
+                    usercomments = value[1];
+                }else if (value[0] == 'varfile') {
+                    varfile = value[1];
+                }else if (value[0] == 'vmargs') {
+                    vmargs = value[1];
+                }
+            }
+        }
+
         if (configfile) {
             if (process.platform == 'linux') {
                 script = 'cd ' + '"' + productpath + '/cmdline"' + '\n'
@@ -258,6 +311,9 @@ function getImsharedLoc(productpath) {
     ibmloc = productpath.substring(0, rollupIndex);
     // Need to add proper sharedlocation HCL/IBM - hardcoded to HCL
     return ibmloc + path.sep + "HCLIMShared";
+}
+function isEmptyOrSpaces(dataset) {
+    return dataset === null || dataset.match(/^ *$/) !== null;
 }
 // Call the main function to run the action
 main();
