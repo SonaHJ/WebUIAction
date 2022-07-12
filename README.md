@@ -64,6 +64,44 @@ Specify the complete path to a directory in which to export web analytic results
 Specify the below inputs in the Key=Value format.
 Ex: Key1=Value1|Key2=Value2
 
+## Mulltilevalue inputs
+
+### `exportstatsformat`
+Use this option to set the report type json or csv.
+
+### `exportstatreportlist`
+A comma-separated list of absolute paths to custom report format files (.view files) to use when exporting statistical report data with the-exportstats option.
+
+### `imports`
+Path of the Project location to be imported.
+
+### `labels`
+Use this option to add labels to test results. To add multiple labels to a test result, you must separate each label by using a comma.
+
+### `overwrite`
+Determines whether a results file with the same name is overwritten. The default value, true, means that the results file is overwritten.
+
+### `protocolinput`
+Use this argument to run a Web UI test in parallel on different browsers.
+
+### `publish`
+You can use this parameter to publish test results to the Server.
+
+### `publish_for`
+You can use this option to publish the test results based on the completion status of the tests.
+
+### `publishreports`
+You can use this option to publish specific test results to the Server.
+
+### `results`
+Specify a name for the results file. If you do not specify a name, the test or schedule name appended by the timestamp is used for the name. The results file is stored in the Results directory. If you are running multiple tests, do not provide a name for the results file.
+
+### `usercomments`
+Add text within double quotation mark to display it in the User Comments row of the report.
+
+### `varfile`
+The complete path to the XML file that contains the variable name and value pairs.
+
 ## Example usage
 
 ```yaml
