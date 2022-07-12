@@ -64,7 +64,7 @@ Specify the complete path to a directory in which to export web analytic results
 Specify the below inputs in the Key=Value format.
 Ex: Key1=Value1|Key2=Value2
 
-## Mulltilevalue inputs
+## Multiplevalue inputs
 
 ### `exportstatsformat`
 Use this option to set the report type json or csv.
