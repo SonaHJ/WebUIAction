@@ -1,6 +1,6 @@
 # Web-UI Action
 
-create tests for your application in HCL OneTest™ UI and run those using this action. 
+This action enables you to run HCL OneTest UI tests.
 
 ## How this works
 
@@ -12,9 +12,32 @@ You can use the Web-UI Action that enables you to select any type of test create
 2. Create a folder named ".github" in the root of the repository
 3. Create a folder named "workflows" inside the ".github" folder.
 5. Create a .yml file with any name , inside the "workflow" folder and you need to code as following example in that yml file
-6. Replace the example input values with your details.
-7. Push it into the main branch
-8. go to the action section in the repo to see the CICD pipeline working
+## Example usage
+
+```yaml
+name: WebUI Action
+
+on: workflow_dispatch
+
+jobs:
+
+    WebUI-Action:
+        runs-on: self-hosted
+        name: Execute RPT Test
+        steps:
+         - name: RPT Action
+           uses: SonaHJ/RPTAction@RPT_Release
+          with:
+            productpath: C:\Program Files\HCL\HCLOneTest
+            imshared: C:\Program Files\HCL\HCLIMShared\plugins
+            workspace: D:\workspace_pt
+            project: Test
+            suite: Test
+```
+7. Replace the example input values with your details.
+8. Push it into the main branch
+9. Go to the Actions section in the repository and select the workflow.
+10. Click the Run workflow dropdown and the list of input boxes get displayed.
 
 To configure agent:
 1. Go to settings (Repo).
@@ -102,25 +125,3 @@ Add text within double quotation mark to display it in the User Comments row of 
 ### `varfile`
 The complete path to the XML file that contains the variable name and value pairs.
 
-## Example usage
-
-```yaml
-name: WebUI Action
-
-on: workflow_dispatch
-
-jobs:
-
-    WebUI-Action:
-        runs-on: self-hosted
-        name: Execute RPT Test
-        steps:
-         - name: RPT Action
-           uses: SonaHJ/RPTAction@RPT_Release
-          with:
-            productpath: C:\Program Files\HCL\HCLOneTest
-            imshared: C:\Program Files\HCL\HCLIMShared\plugins
-            workspace: D:\workspace_pt
-            project: Test
-            suite: Test
-```
