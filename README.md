@@ -84,6 +84,12 @@ Specify the complete path to a directory in which to export web analytic results
 
 ### `multipleValues`
 
+you may only define up to 10 inputs for a workflow_dispatch event. Remaining inputs need to be Key=Value pair.
+
+https://github.community/t/you-may-only-define-up-to-10-inputs-for-a-workflow-dispatch-event/160733
+
+https://github.com/github/docs/issues/15710
+
 Specify the below inputs in the Key=Value format.
 Ex: Key1=Value1|Key2=Value2
 
