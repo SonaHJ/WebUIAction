@@ -23,10 +23,10 @@ jobs:
 
     WebUI-Action:
         runs-on: self-hosted
-        name: Execute RPT Test
+        name: Execute WebUI Test
         steps:
-         - name: RPT Action
-           uses: SonaHJ/RPTAction@RPT_Release
+         - name: WebUI Action
+           uses: SonaHJ/WebUIActio@WebUI_Release
           with:
             workspace: D:\workspace_pt
             project: Test
