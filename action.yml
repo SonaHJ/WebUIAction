@@ -1,5 +1,5 @@
-name: '_prop_task_ui_productName_ Action'
-description: '_prop_task_ui_productName_ Action to execute WebUI test from GitHub Action.'
+name: 'WebUI Action'
+description: 'WebUI Action to execute WebUI test from GitHub Action.'
 inputs:
   productpath:
     description: 'Path to Product Installation directory'
