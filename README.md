@@ -46,10 +46,6 @@ To configure agent:
 
 ## Inputs
 
-### `imshared`
-
-Complete path to HCLIMShared location, if it is not at default location.
-
 ### `workspace`
 
 **Required** Complete path to Eclipse workspace.
@@ -61,6 +57,10 @@ Complete path to HCLIMShared location, if it is not at default location.
 ### `suite`
 
 **Required** Specify the relative path from the project to the test including the file name of the test. A test can be WebUI test, Compound test, Performance schedule or Accelerated Functional Test (AFT) suite. The test suite name must contain the file extension when it is an AFT suite. To run multiple tests from the same project sequentially, you must separate the tests by a colon (:). If you provide multiple tests, you cannot include an AFT suite along with it.
+
+### `imshared`
+
+Complete path to HCLIMShared location, if it is not at default location.
 
 ### `configfile`
 
