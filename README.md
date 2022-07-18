@@ -28,11 +28,10 @@ jobs:
          - name: RPT Action
            uses: SonaHJ/RPTAction@RPT_Release
           with:
-            productpath: C:\Program Files\HCL\HCLOneTest
-            imshared: C:\Program Files\HCL\HCLIMShared\plugins
             workspace: D:\workspace_pt
             project: Test
             suite: Test
+            imshared: C:\Program Files\HCL\HCLIMShared\plugins
 ```
 7. Replace the example input values with your details.
 8. Push it into the main branch
