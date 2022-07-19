@@ -1,10 +1,10 @@
-# Web-UI Action
+# HCL OneTest WEBUI
 
 This action enables you to run HCL OneTest UI tests.
 
 ## How this works
 
-You can use the Web-UI Action that enables you to select any type of test created in HCL OneTest™ UI that you can add to the job in the GitHub action.
+You can use the HCL OneTest WEBUI Action that enables you to select any type of test created in HCL OneTest™ UI that you can add to the job in the GitHub action.
 
 ## Pre requisites
 
@@ -15,7 +15,7 @@ You can use the Web-UI Action that enables you to select any type of test create
 ## Example usage
 
 ```yaml
-name: WebUI Action
+name: HCL OneTest WEBUI
 
 on: workflow_dispatch
 
@@ -23,9 +23,9 @@ jobs:
 
     WebUI-Action:
         runs-on: self-hosted
-        name: Execute WebUI Test
+        name: HCL OneTest WEBUI
         steps:
-         - name: WebUI Action
+         - name: HCL OneTest WEBUI
            uses: SonaHJ/WebUIActio@WebUI_Release
           with:
             workspace: D:\workspace_pt
