@@ -1,5 +1,5 @@
-name: 'WebUI Action'
-description: 'WebUI Action to execute WebUI test from GitHub Action.'
+name: 'HCL OneTest WEBUI'
+description: 'This Action to execute WebUI test from GitHub Action.'
 inputs:
   productpath:
     description: 'Path to Product Installation directory'
