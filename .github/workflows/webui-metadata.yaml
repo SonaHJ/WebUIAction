@@ -1,4 +1,4 @@
-name: WebUI Action
+name: HCL OneTest WEBUI
 
 on:
     workflow_dispatch:
@@ -23,9 +23,9 @@ jobs:
 
     WebUI-Action:
         runs-on: self-hosted
-        name: Execute WebUI Test
+        name: HCL OneTest WEBUI
         steps:
-         - name: Execute Test
+         - name: HCL OneTest WEBUI
            uses: SonaHJ/WebUIAction@main
            with:
             productpath: '${{ github.event.inputs.productpath }}'
