@@ -17,7 +17,24 @@ You can use the HCL OneTest WEBUI Action that enables you to select any type of 
 ```yaml
 name: HCL OneTest WEBUI
 
-on: workflow_dispatch
+on:
+    workflow_dispatch:
+        inputs:
+            productpath:
+                description: 'Product Path'
+                required: false
+            imshared:
+                description: 'IMShared Location'
+                required: false
+            workspace:
+                description: 'Workspace'
+                required: true
+            project:
+                description: 'Project'
+                required: true
+            suite:
+                description: 'Test Suite Name'
+                required: true
 
 jobs:
 
@@ -26,12 +43,13 @@ jobs:
         name: HCL OneTest WEBUI
         steps:
          - name: HCL OneTest WEBUI
-           uses: SonaHJ/WebUIActio@WebUI_Release
-          with:
-            workspace: D:\workspace_pt
-            project: Test
-            suite: Test
-            imshared: C:\Program Files\HCL\HCLIMShared\plugins
+           uses: SonaHJ/WebUIAction@main
+           with:
+            productpath: '${{ github.event.inputs.productpath }}'
+            imshared: '${{ github.event.inputs.imshared }}'
+            workspace: '${{ github.event.inputs.workspace }}'
+            project: '${{ github.event.inputs.project }}'
+            suite: '${{ github.event.inputs.suite }}'
 ```
 7. Replace the example input values with your details.
 8. Push it into the main branch
