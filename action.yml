@@ -1,25 +1,21 @@
 name: 'HCL OneTest WEBUI'
 description: 'This Action to execute WebUI test from GitHub Action.'
 inputs:
-  productpath:
-    description: 'Path to Product Installation directory'
-    required: true
-
   imshared:
     description: 'The path to the IMShared folder in your local installation, if it is not at default location. This is where plugins and product dependencies will be located by the execution agent, required if Config File is not specified'
     required: false
 
   workspace:
     description: 'The complete path to the Eclipse workspace, required if Config File is not specified'
-    required: false
+    required: true
 
   project:
     description: 'The name of a project within the workspace to use, required if Config File is not specified'
-    required: false
+    required: true
 
   suite:
     description: 'The name of a test within the project to use. A test can be WebUI test, Compound test, Performance schedule or Accelerated Functional Test (AFT) suite, required if Config File is not specified'
-    required: false
+    required: true
 
   configfile:
     description: 'Use this option to specify the complete path to a file that contains the parameters for a test run'
@@ -41,52 +37,8 @@ inputs:
     description: 'Use this option to set report type csv or json'
     required: false
 
-  exportstatreportlist:
-    description: 'Use this option to specify a comma-separated list of report IDs along with exportstats or exportstatshtml to list the reports that you want to export in place of the default reports, or the reports selected under Preferences. To view this setting, navigate to Window > Preferences > Test > Performance Test Reports > Export Reports.To copy the report IDs list into your command line, navigate to Window > Preferences > Test > Performance Test Reports > Export Reports. UnderSelect reports to export, select the required reports, and click Copy ID to clipboard'
-    required: false
-
-  imports:
-    description: 'Path of the Project location to be imported.'
-    required: false
-
-  labels:
-    description: 'Use this option to add labels to test results. To add multiple labels to a test result, you must separate each label by using a comma.'
-    required: false
-
-  overwrite:
-    description: 'Determines whether a results file with the same name is overwritten. The default value, false, indicates that the new results file is created. If the value is true, the file is overwritten and retains the same file name.'
-    required: false
-
-  publish:
-    description: 'You can use this parameter to publish test results to the Server'
-    required: false
-
-  publish_for:
-    description: 'You can use this option to publish the test results based on the completion status of the tests'
-    required: false
-
-  publishreports:
-    description: 'You can use this option to publish specific test results to the Server'
-    required: false
-
-  protocolinput:
-    description: 'Use this parameter to run a Web UI test in parallel on different browsers, for example - all.available.targets.in.parallel=chrome,ff,ie' 
-    required: false
-
-  results:
-    description: 'Use this option to specify the name of the results file. The default result file name is the test name with a time stamp appended. Specify a folder name that is relative to the project to store the test results. For example, -results folder/resultname'
-    required: false
-
-  swapdatasets:
-    description: 'Use this option to replace dataset values during a test or schedule run. You must ensure that both original and new datasets are in the same workspace and have the same column names. You must also include the path to the dataset. For example, /project_name/ds_path/ds_filename.csv:/project_name/ds_path/new_ds_filename.csv'
-    required: false
-
-  usercomments:
-    description: 'Add text within double quotation mark to display it in the User Comments row of the report'
-    required: false
-
-  varfile:
-    description: 'The complete path to the XML file that contains the variable name and value pairs.'
+  multipleValues: 
+    description: 'Specify the remaining inputs in the Key=Value format. Ex: Key1=Value1|Key2=Value2. Refer ReadMe'
     required: false
 runs:
   using: 'node16'
