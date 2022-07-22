@@ -57,7 +57,7 @@ jobs:
         name: HCL OneTest WEBUI
         steps:
          - name: HCL OneTest WEBUI
-           uses: SonaHJ/WebUIAction@HCLOneTestWEBUI_02
+           uses: SonaHJ/WebUIAction@HCLOneTestWEBUI_03
            with:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
