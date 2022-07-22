@@ -20,12 +20,6 @@ name: HCL OneTest WEBUI
 on:
     workflow_dispatch:
         inputs:
-            productpath:
-                description: 'Product Path'
-                required: false
-            imshared:
-                description: 'IMShared Location'
-                required: false
             workspace:
                 description: 'Workspace'
                 required: true
@@ -35,6 +29,27 @@ on:
             suite:
                 description: 'Test Suite Name'
                 required: true
+            imshared:
+                description: 'IMShared Location'
+                required: false
+            configfile:
+                description: 'Configuration File'
+                required: false
+            swapdatasets:
+                description: 'Dataset Override'
+                required: false
+            exportreport:
+                description: 'Export Report'
+                required: false
+            exportstats:
+                description: 'Export Stats'
+                required: false
+            exportstatshtml:
+                description: 'Export stats html'
+                required: false
+            multipleValues:
+                description: 'Multiplevalue inputs'
+                required: false
 
 jobs:
 
@@ -45,11 +60,17 @@ jobs:
          - name: HCL OneTest WEBUI
            uses: SonaHJ/WebUIAction@main
            with:
-            productpath: '${{ github.event.inputs.productpath }}'
-            imshared: '${{ github.event.inputs.imshared }}'
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
             suite: '${{ github.event.inputs.suite }}'
+            imshared: '${{ github.event.inputs.imshared }}'
+            configfile: '${{ github.event.inputs.configfile }}'
+            swapdatasets: '${{ github.event.inputs.swapdatasets }}'
+            exportreport: '${{ github.event.inputs.exportreport }}'
+            exportstats: '${{ github.event.inputs.exportstats }}'
+            exportstatshtml: '${{ github.event.inputs.exportstatshtml }}'
+            multipleValues: '${{ github.event.inputs.multipleValues }}'
+
 ```
 7. Replace the example input values with your details.
 8. Push it into the main branch
