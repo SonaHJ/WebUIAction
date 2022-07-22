@@ -9,9 +9,8 @@ You can use the HCL OneTest WEBUI Action that enables you to select any type of 
 ## Pre requisites
 
 1. Create a github repository
-2. Create a folder named ".github" in the root of the repository
-3. Create a folder named "workflows" inside the ".github" folder.
-5. Create a .yml file with any name , inside the "workflow" folder and you need to code as following example in that yml file
+2. Create a folder named ".github/workflows" in the root of the repository
+5. Create a .yml file with any name , inside the ".github/workflows" folder and you need to copy example in that yml file
 ## Example usage
 
 ```yaml
