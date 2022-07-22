@@ -71,10 +71,9 @@ jobs:
             multipleValues: '${{ github.event.inputs.multipleValues }}'
 
 ```
-7. Replace the example input values with your details.
-8. Push it into the main branch
-9. Go to the Actions section in the repository and select the workflow.
-10. Click the Run workflow dropdown and the list of input boxes get displayed.
+7. Push it into the main branch
+8. Go to the Actions section in the repository and select the workflow.
+9. Click the Run workflow dropdown and the list of input boxes get displayed.
 
 To configure agent:
 1. Go to settings (Repo).
