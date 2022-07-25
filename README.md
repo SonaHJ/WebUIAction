@@ -1,16 +1,13 @@
-# HCL OneTest WEBUI
+# HCL OneTest UI-WEBUI
 
-This action enables you to run HCL OneTest UI tests.
-
-## How this works
-
-You can use the HCL OneTest WEBUI Action that enables you to select any type of test created in HCL OneTest™ UI that you can add to the job in the GitHub action.
+This action enables you to run HCL OneTest UI-WEBUI tests.
 
 ## Pre requisites
 
 1. Create a github repository
 2. Create a folder named ".github/workflows" in the root of the repository
-5. Create a .yml file with any name , inside the ".github/workflows" folder and you need to copy example in that yml file
+3. Create a .yml file with any name , inside the ".github/workflows" folder and you need to copy example in that yml file
+
 ## Example usage
 
 ```yaml
@@ -46,7 +43,7 @@ on:
             exportstatshtml:
                 description: 'Export stats html'
                 required: false
-            multipleValues:
+            multiplevalues:
                 description: 'Multiplevalue inputs'
                 required: false
 
@@ -68,17 +65,17 @@ jobs:
             exportreport: '${{ github.event.inputs.exportreport }}'
             exportstats: '${{ github.event.inputs.exportstats }}'
             exportstatshtml: '${{ github.event.inputs.exportstatshtml }}'
-            multipleValues: '${{ github.event.inputs.multipleValues }}'
+            multiplevalues: '${{ github.event.inputs.multiplevalues }}'
 
 ```
-7. Push it into the main branch
-8. Go to the Actions section in the repository and select the workflow.
-9. Click the Run workflow dropdown and the list of input boxes get displayed.
+4. Push it into the main branch
+5. To configure agent:
+    1. Go to settings (Repo).
+    2. Select action -> runner.
+    3. Click Create self-hosted runner, follow the download and configure instruction
 
-To configure agent:
-1. Go to settings (Repo).
-2. Select action -> runner.
-3. Click Create self-hosted runner, follow the download and configure instruction
+6. Go to the Actions section in the repository and select the workflow.
+7. Click the Run workflow dropdown and the list of input boxes get displayed.
 
 ## Inputs
 
@@ -118,7 +115,7 @@ The complete path to a directory in which to store exported statistical report d
 
 Specify the complete path to a directory in which to export web analytic results. Analyze the results on a web browser without using the HCL OneTest Studio. If you are running multiple tests, do not provide a value in this field. The web analytic results will be exported to Jenkins workspace.
 
-### `multipleValues`
+### `multiplevalues`
 
 you may only define up to 10 inputs for a workflow_dispatch event. Remaining inputs need to be Key=Value pair.
 
@@ -129,7 +126,7 @@ https://github.com/github/docs/issues/15710
 Specify the below inputs in the Key=Value format.
 Ex: publish=publish_urlVal|labels=Value2
 
-## Multiplevalue inputs
+## Supported multiplevalue inputs
 
 ### `exportstatsformat`
 Use this option to set the report type json or csv.
