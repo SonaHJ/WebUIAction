@@ -17,23 +17,23 @@ inputs:
     description: 'The name of a test within the project to use. A test can be WebUI test, Compound test, Performance schedule or Accelerated Functional Test (AFT) suite, required if Config File is not specified'
     required: true
 
-  configfile:
+  configFile:
     description: 'Use this option to specify the complete path to a file that contains the parameters for a test run'
     required: false
 
-  exportreport:
+  exportReport:
     description: 'Use this option to export the unified report to any of the formats - PDF, XML or HTML. For example, to export the report to only the pdf format, you can input: type=unified;format=pdf;folder=path;filename=testreport. If you want to export the report to multiple formats, you can specify the file formats as comma-separated values.'
     required: false
 
-  exportstats:
+  exportStats:
     description: 'Use this option to export reports in comma-separated values (CSV) format'
     required: false
 
-  exportstatshtml:
+  exportStatsHtml:
     description: 'Use this option if you want to export web analytic results only. The results are exported in the specified directory. You can then analyze the results on a web browser without using the test workbench.'
     required: false
 
-  exportstatsformat:
+  exportStatsFormat:
     description: 'Use this option to set report type csv or json'
     required: false
 

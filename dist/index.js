@@ -8889,11 +8889,11 @@ const main = async () => {
         const project = core.getInput('project', { required: false });
         const suite = core.getInput('suite', { required: false });
 
-        const configfile = core.getInput('configfile', { required: false });
-        const swapdatasets = core.getInput('swapdatasets', { required: false });
-        const exportreport = core.getInput('exportreport', { required: false });
-        const exportstats = core.getInput('exportstats', { required: false });
-        const exportstatshtml = core.getInput('exportstatshtml', { required: false });
+        const configfile = core.getInput('configFile', { required: false });
+        const swapdatasets = core.getInput('swapDatasets', { required: false });
+        const exportreport = core.getInput('exportReport', { required: false });
+        const exportstats = core.getInput('exportStats', { required: false });
+        const exportstatshtml = core.getInput('exportStatsHtml', { required: false });
         const multipleValues = core.getInput('multipleValues', { required: false });
 
         var exportstatsformat;
@@ -8933,9 +8933,9 @@ const main = async () => {
                         "Input key value is not given"
                     );
                 }
-                if (value[0] == 'exportstatsformat') {
+                if (value[0] == 'exportStatsFormat') {
                     exportstatsformat = value[1];
-                } else if (value[0] == 'exportstatreportlist') {
+                } else if (value[0] == 'exportStatReportList') {
                     exportstatreportlist = value[1];
                 } else if (value[0] == 'imports') {
                     imports = value[1];
@@ -8943,23 +8943,23 @@ const main = async () => {
                     labels = value[1];
                 } else if (value[0] == 'overwrite') {
                     overwrite = value[1];
-                } else if (value[0] == 'protocolinput') {
+                } else if (value[0] == 'protocolInput') {
                     protocolinput = value[1];
                 }else if (value[0] == 'publish') {
                     publish = value[1];
-                } else if (value[0] == 'publish_for') {
+                } else if (value[0] == 'publishFor') {
                     publish_for = value[1];
-                } else if (value[0] == 'publishreports') {
+                } else if (value[0] == 'publishReports') {
                     publishreports = value[1];
                 } else if (value[0] == 'results') {
                     results = value[1];
                 }else if (value[0] == 'users') {
                     users = value[1];
-                }else if (value[0] == 'usercomments') {
+                }else if (value[0] == 'userComments') {
                     usercomments = value[1];
-                }else if (value[0] == 'varfile') {
+                }else if (value[0] == 'varFile') {
                     varfile = value[1];
-                }else if (value[0] == 'vmargs') {
+                }else if (value[0] == 'vmArgs') {
                     vmargs = value[1];
                 }
             }

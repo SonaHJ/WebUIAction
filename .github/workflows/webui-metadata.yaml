@@ -12,22 +12,22 @@ on:
             suite:
                 description: 'Test Suite Name'
                 required: true
-            imshared:
+            imShared:
                 description: 'IMShared Location'
                 required: false
-            configfile:
+            configFile:
                 description: 'Configuration File'
                 required: false
-            swapdatasets:
+            swapDatasets:
                 description: 'Dataset Override'
                 required: false
-            exportreport:
+            exportReport:
                 description: 'Export Report'
                 required: false
-            exportstats:
+            exportStats:
                 description: 'Export Stats'
                 required: false
-            exportstatshtml:
+            exportStatsHtml:
                 description: 'Export stats html'
                 required: false
             multipleValues:
@@ -46,10 +46,10 @@ jobs:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
             suite: '${{ github.event.inputs.suite }}'
-            imshared: '${{ github.event.inputs.imshared }}'
-            configfile: '${{ github.event.inputs.configfile }}'
-            swapdatasets: '${{ github.event.inputs.swapdatasets }}'
-            exportreport: '${{ github.event.inputs.exportreport }}'
-            exportstats: '${{ github.event.inputs.exportstats }}'
-            exportstatshtml: '${{ github.event.inputs.exportstatshtml }}'
+            imShared: '${{ github.event.inputs.imShared }}'
+            configFile: '${{ github.event.inputs.configFile }}'
+            swapDatasets: '${{ github.event.inputs.swapDatasets }}'
+            exportReport: '${{ github.event.inputs.exportReport }}'
+            exportStats: '${{ github.event.inputs.exportStats }}'
+            exportStatsHtml: '${{ github.event.inputs.exportStatsHtml }}'
             multipleValues: '${{ github.event.inputs.multipleValues }}'
