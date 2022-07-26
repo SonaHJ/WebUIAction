@@ -1,12 +1,12 @@
 # HCL OneTest UI-WEBUI
 
-This action enables you to run HCL OneTest UI-WEBUI tests.
+This action enables you to run HCL OneTest WEBUI tests.
 
 ## Pre requisites
 
 1. Create a github repository
 2. Create a folder named ".github/workflows" in the root of the repository
-3. Create a .yml file with any name , inside the ".github/workflows" folder and you need to copy example in that yml file
+3. Create a .yml file with any name inside the ".github/workflows" folder and you need to copy example in that yml file
 
 ## Example usage
 
